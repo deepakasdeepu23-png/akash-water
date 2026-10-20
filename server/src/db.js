@@ -11,10 +11,13 @@ export const dbConfig = {
 
 export const pool = mysql.createPool({
   ...dbConfig,
+  ssl: {
+    rejectUnauthorized: false,
+  },
   waitForConnections: true,
   connectionLimit: 10,
-  decimalNumbers: true, // DECIMAL columns come back as numbers
-  dateStrings: true,    // DATE/TIMESTAMP come back as plain strings
+  decimalNumbers: true,
+  dateStrings: true,
 });
 
 // Make CURDATE() match the shop's local day
